@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="studentsmanagement_view_form" model="ir.ui.view">
+            <field name="name">students_management_view_form</field>
+            <field name="model">students.management</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <button string="點我預約" type="object" name="book_time"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="sex_type"/>
+                            <field name="birthday"/>
+                            <field name="info"/>
+                            <field name="currently_address"/>
+                            <field name="ps"/>
+                        </group>
+                        <notebook>
+                            <page string="自我介紹">
+                                <field name="student_introduce"/>
+                                <field name="currently_address"/>
+                                這學生很懶甚麼都沒有留下。
+                            </page>
+                            <page string="學生評價">
+                                <field name="student_about"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <search>
+                        <field name="student_about"/>
+                    </search>
+                </form>
+            </field>
+        </record>
+
+        <record id="studentsmanagement_view_search" model="ir.ui.view">
+            <field name="name">studentsmanagement_view_search</field>
+            <field name="model">students.management</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="student_about"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="studentsmanagement_view_tree" model="ir.ui.view">
+            <field name="name">students_management_view_tree</field>
+            <field name="model">students.management</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="studentsmanagement_view_action" model="ir.actions.act_window">
+            <field name="name">students_management_view_action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">students.management</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK --> 
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="studentsmanagement_view_menu"
+                  name="學生管理"
+                  parent="safereport_view_root"
+                  action="studentsmanagement_view_action"
+                  sequence="2"/>
+    </data>
+</odoo>

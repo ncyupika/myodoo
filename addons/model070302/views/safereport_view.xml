@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="safe_report_view_form" model="ir.ui.view">
+            <field name="name">safe_report_view_form</field>
+            <field name="model">save.report</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="house_address"/>
+                            <field name="name"/>
+                            <field name="house_type"/>
+                            <field name="number_of_people"/>
+                            <field name="start_date"/>
+                            <field name="duration"/>
+                        </group>
+                        <notebook>
+                            <page string="現居學生">
+                                <field name="house_description"/>
+                                <field name="now_people"/>
+                                這房東很懶甚麼都沒有留下。
+                            </page>
+                            <page string="房屋評價">
+                                This is an example of notebooks
+                                <field name="house_about"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="safe_report_view_tree" model="ir.ui.view">
+            <field name="name">safe_report_view_tree</field>
+            <field name="model">save.report</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="safe_report_view_action" model="ir.actions.act_window">
+            <field name="name">safe_report_view_action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">save.report</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+        
+        <menuitem id="safereport_view_root" name="安全回報管理" sequence="1"/>
+
+        <menuitem id="safereport_view_categ" name="安全回報單" parent="safereport_view_root" sequence="1"/>
+            <menuitem id="safereport_view_menu"
+                  name="房屋管理"
+                  parent="safereport_view_categ"
+                  action="safe_report_view_action"
+                  sequence="1"/>
+    </data>
+</odoo>
